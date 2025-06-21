@@ -301,8 +301,8 @@ export default function Dashboard() {
                         : suggestion.type=='dish' ? 'p-3 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-xl border border-green-200/50 dark:border-green-800/50' : ''
                       }
                       >
-                        <p className="text-sm font-thin">{suggestion.message}</p>
-                        <Badge variant="secondary" className="mt-2 text-xs font-thin">
+                        <p className="text-sm font-light">{suggestion.message}</p>
+                        <Badge variant="secondary" className="mt-2 text-xs font-light">
                           {suggestion.type.toUpperCase()}
                         </Badge>
                       </div>
