@@ -39,9 +39,7 @@ export default function LandingPage() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">🧑‍🍳</span>
-              </div>
+              <img src='/MunchBook_Logo.png' alt="" className="h-8 w-8 rounded-lg" />
               <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
                 MunchBook
               </span>
@@ -81,7 +79,7 @@ export default function LandingPage() {
               </Button>
               <Button
                 asChild
-                className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
+                className="hidden md:flex bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
               >
                 <Link href="/auth">
                   Get Started <ArrowRight className=" h-4 w-4" />
@@ -93,7 +91,7 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
+      <section className="pt-32 pb-20 md:px-6 px-1">
         <div className="container mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -180,7 +178,7 @@ export default function LandingPage() {
       </section>
 
       {/* Interactive Demo */}
-      <section id="demo" className="py-20 px-6">
+      <section id="demo" className="py-20 md:px-6 px-1">
         <div className="container mx-auto">
           <InteractiveDemo />
         </div>
@@ -189,7 +187,7 @@ export default function LandingPage() {
       {/* Features Section */}
       <section
         id="features"
-        className="py-20 px-6 bg-slate-50/50 dark:bg-slate-900/50"
+        className="py-20 md:px-6 px-1 bg-slate-50/50 dark:bg-slate-900/50"
       >
         <div className="container mx-auto">
           <div className="text-center mb-20">
@@ -213,7 +211,7 @@ export default function LandingPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-6">
+      <section className="py-20 md:px-6 px-1">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
@@ -282,9 +280,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">🧑‍🍳</span>
-                </div>
+                 <img src='/MunchBook_Logo.png' alt="" className="h-8 w-8 rounded-lg" />
                 <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
                   MunchBook
                 </span>

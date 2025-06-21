@@ -100,25 +100,25 @@ export function TestimonialCarousel() {
             transition={{ duration: 0.5 }}
             className="absolute inset-0"
           >
-            <Card className="p-8 h-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-0 shadow-2xl">
+            <Card className="md:p-8 p-2 h-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-0 shadow-2xl">
               <div className="flex flex-col items-center text-center h-full justify-center">
                 <div
-                  className={`w-16 h-16 bg-gradient-to-br ${testimonials[currentIndex].color} rounded-full flex items-center justify-center text-white font-bold text-xl mb-6`}
+                  className={`md:w-16 md:h-16 w-8 h-8 bg-gradient-to-br ${testimonials[currentIndex].color} rounded-full flex items-center justify-center text-white font-bold text-sm md:text-xl mb-6`}
                 >
                   {testimonials[currentIndex].avatar}
                 </div>
 
                 <div className="flex mb-4">
                   {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="md:w-5 md:h-5 w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
 
-                <blockquote className="text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed max-w-2xl">
+                <blockquote className="text-sm md:text-lg text-slate-700 dark:text-slate-300 mb-6 leading-relaxed max-w-2xl">
                   "{testimonials[currentIndex].content}"
                 </blockquote>
 
-                <div>
+                <div className="text-sm md:text-base">
                   <div className="font-semibold text-slate-900 dark:text-white">{testimonials[currentIndex].name}</div>
                   <div className="text-slate-600 dark:text-slate-400">{testimonials[currentIndex].role}</div>
                 </div>

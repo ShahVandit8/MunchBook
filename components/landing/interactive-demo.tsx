@@ -38,7 +38,7 @@ export function InteractiveDemo() {
       case "track":
         return (
           <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+            <div className="md:flex block items-center justify-between p-4 space-y-4 md:space-y-0 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center mr-4">
                   <span className="text-white font-bold">🍝</span>

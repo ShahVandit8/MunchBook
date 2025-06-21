@@ -112,7 +112,7 @@ export default function SearchPage() {
   }
 
   const RestaurantResult = ({ restaurant }: { restaurant: Restaurant & { type: string } }) => (
-    <Card>
+    <Card className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-xl border border-orange-200/50 dark:border-orange-800/50">
       <CardContent className="p-4">
         <div className="flex items-start justify-between">
           <div className="flex-1">
@@ -120,7 +120,7 @@ export default function SearchPage() {
               <MapPin className="h-4 w-4 text-muted-foreground" />
               <h3 className="font-semibold">{restaurant.name}</h3>
             </div>
-            <div className="flex items-center gap-2 mb-2">
+            <div className="grid sm:flex items-center gap-2 mb-2">
               <Badge variant="secondary">{restaurant.cuisineType}</Badge>
               {restaurant.location && <span className="text-sm text-muted-foreground">{restaurant.location}</span>}
             </div>
@@ -141,7 +141,7 @@ export default function SearchPage() {
   )
 
   const DishResult = ({ dish }: { dish: any }) => (
-    <Card>
+    <Card className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-xl border border-green-200/50 dark:border-green-800/50">
       <CardContent className="p-4">
         <div className="flex items-start justify-between">
           <div className="flex-1">
@@ -163,7 +163,7 @@ export default function SearchPage() {
   )
 
   const VisitResult = ({ visit }: { visit: Visit & { type: string } }) => (
-    <Card>
+    <Card className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl border border-purple-200/50 dark:border-purple-800/50">
       <CardContent className="p-4">
         <div className="flex items-start justify-between">
           <div className="flex-1">
@@ -217,7 +217,7 @@ export default function SearchPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex gap-4">
+            <div className="grid sm:flex gap-4">
               <div className="flex-1">
                 <Input
                   placeholder="Search restaurants, dishes, reviews..."

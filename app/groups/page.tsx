@@ -60,9 +60,27 @@ export default function GroupsPage() {
     }
   }
 
-  const copyInviteCode = (inviteCode: string) => {
-    navigator.clipboard.writeText(inviteCode)
-    toast({ title: "Invite code copied to clipboard!" })
+  const copyInviteCode = async (inviteCode: string) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(inviteCode)
+      } else {
+        // Fallback for insecure context or unsupported clipboard API (e.g., some mobile browsers)
+        const textArea = document.createElement("textarea")
+        textArea.value = inviteCode
+        // Avoid scrolling to bottom
+        textArea.style.position = "fixed"
+        textArea.style.left = "-9999px"
+        document.body.appendChild(textArea)
+        textArea.focus()
+        textArea.select()
+        document.execCommand("copy")
+        document.body.removeChild(textArea)
+      }
+      toast({ title: "Invite code copied to clipboard!" })
+    } catch (err) {
+      toast({ title: "Failed to copy invite code", variant: "destructive" })
+    }
   }
 
   const inviteMember = async (groupId: string) => {
@@ -182,16 +200,16 @@ export default function GroupsPage() {
         {currentGroup && (
           <Card className="mb-8 border-orange-500">
             <CardHeader>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row items-center justify-between">
                 <div>
                   <CardTitle className="flex items-center gap-2">
                     <Users className="h-5 w-5" />
                     {currentGroup.name}
                     <Badge variant="secondary">Current</Badge>
                   </CardTitle>
-                  <CardDescription>{currentGroup.description}</CardDescription>
+                  <CardDescription className="mt-2">{currentGroup.description}</CardDescription>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 mt-2 sm:mt-0">
                   <Button variant="outline" size="sm" onClick={() => copyInviteCode(currentGroup.inviteCode)}>
                     <Copy className="h-4 w-4 mr-2" />
                     Copy Invite Code
@@ -283,7 +301,7 @@ export default function GroupsPage() {
                     Created {new Date(currentGroup.createdAt).toLocaleDateString()}
                   </div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Copy className="h-4 w-4" />
+                    <Copy className="h-4 w-4 cursor-pointer hover:text-white" onClick={() => copyInviteCode(currentGroup.inviteCode)} />
                     Invite Code: {currentGroup.inviteCode}
                   </div>
                   {!isAdmin(currentGroup) && (

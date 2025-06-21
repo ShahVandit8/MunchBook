@@ -166,7 +166,7 @@ export default function History() {
         </div>
 
         {/* Filters */}
-        <Card className="mb-8">
+        <Card className="mb-8" >
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Search className="h-5 w-5" />
@@ -234,23 +234,23 @@ export default function History() {
             </Card>
           ) : (
             <>
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
                 <p className="text-sm text-muted-foreground">
                   Showing {filteredVisits.length} of {visits.length} visits
                 </p>
               </div>
 
               {filteredVisits.map((visit) => (
-                <Card key={visit._id}>
-                  <CardContent className="p-6">
-                    <div className="flex items-start justify-between">
+                <Card key={visit._id} className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl border border-green-200/50 dark:border-green-800/50">
+                  <CardContent className="p-4 sm:p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                       <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
                           <h3 className="text-lg font-semibold">{visit.restaurant?.name}</h3>
-                          <Badge variant="secondary">{visit.restaurant?.cuisineType}</Badge>
+                          <Badge variant="secondary" className="w-fit">{visit.restaurant?.cuisineType}</Badge>
                         </div>
 
-                        <div className="flex items-center gap-4 mb-3 text-sm text-muted-foreground">
+                        <div className="flex item-center gap-4 mb-3 text-sm text-muted-foreground">
                           <div className="flex items-center gap-1">
                             <Calendar className="h-4 w-4" />
                             {new Date(visit.date).toLocaleDateString()}
@@ -284,7 +284,7 @@ export default function History() {
                         </div>
                       </div>
 
-                      <div className="ml-4">
+                      <div className="mt-4 sm:mt-0 sm:ml-4 flex-shrink-0 flex justify-start">
                         <VisitDetailDialog visit={visit} />
                       </div>
                     </div>

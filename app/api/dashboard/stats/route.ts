@@ -38,26 +38,30 @@ export async function GET() {
     const averageRating =
       visits.length > 0 ? visits.reduce((sum, visit) => sum + visit.overallRating, 0) / visits.length : 0
 
-    // Get favorite restaurant (most visited)
-    const restaurantVisitCounts = await db
-      .collection("visits")
-      .aggregate([
-        { $match: visitsQuery },
-        { $group: { _id: "$restaurantId", count: { $sum: 1 } } },
-        { $sort: { count: -1 } },
-        { $limit: 1 },
-      ])
-      .toArray()
+    // Get favorite restaurant (highest average rating, then most visits)
+    const restaurantStats = await db.collection("visits").aggregate([
+      { $match: visitsQuery },
+      {
+      $group: {
+        _id: "$restaurantId",
+        avgRating: { $avg: "$overallRating" },
+        visitCount: { $sum: 1 },
+      },
+      },
+      { $sort: { avgRating: -1, visitCount: -1 } },
+      { $limit: 1 },
+    ]).toArray()
 
     let favoriteRestaurant = null
-    if (restaurantVisitCounts.length > 0) {
-      const restaurant = await db.collection("restaurants").findOne({ _id: new ObjectId(restaurantVisitCounts[0]._id) })
-
+    if (restaurantStats.length > 0) {
+      const restaurant = await db.collection("restaurants").findOne({ _id: new ObjectId(restaurantStats[0]._id) })
       if (restaurant) {
-        favoriteRestaurant = {
-          ...restaurant,
-          _id: restaurant._id.toString(),
-        }
+      favoriteRestaurant = {
+        ...restaurant,
+        _id: restaurant._id.toString(),
+        avgRating: restaurantStats[0].avgRating,
+        visitCount: restaurantStats[0].visitCount,
+      }
       }
     }
 

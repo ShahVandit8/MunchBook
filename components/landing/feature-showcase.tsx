@@ -65,7 +65,7 @@ export function FeatureShowcase() {
 
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-3xl blur-3xl"></div>
-          <Card className="relative p-8 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-0 shadow-2xl">
+          <Card className="relative p-4 md:p-8 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-0 shadow-2xl">
             <div className="mb-6">
               <h4 className="text-lg font-semibold mb-4">Your Dining Analytics</h4>
               <div className="grid grid-cols-2 gap-4 mb-6">
@@ -113,17 +113,17 @@ export function FeatureShowcase() {
       >
         <div className="order-2 lg:order-1 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-3xl blur-3xl"></div>
-          <Card className="relative p-8 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-0 shadow-2xl">
+          <Card className="relative p-4 md:p-8 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-0 shadow-2xl">
             <div className="mb-6">
               <div className="flex items-center justify-between mb-4">
-                <h4 className="text-lg font-semibold">Family Food Adventures</h4>
-                <Badge variant="secondary" className="bg-green-100 text-green-700">
+                <h4 className="text-base md:text-lg font-semibold">Family Foodies</h4>
+                <Badge variant="outline" className="bg-green-500/10 text-green-600">
                   3 members
                 </Badge>
               </div>
 
               <div className="space-y-3 mb-6">
-                <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                <div className="block md:flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
                   <div className="flex items-center">
                     <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white text-sm font-bold mr-3">
                       J
@@ -131,9 +131,14 @@ export function FeatureShowcase() {
                     <div>
                       <div className="font-medium">John added Pasta Palace</div>
                       <div className="text-sm text-slate-500">2 hours ago</div>
+                      <div className="flex md:hidden mt-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
                     </div>
                   </div>
-                  <div className="flex">
+                  <div className="hidden md:flex">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     ))}
@@ -148,9 +153,15 @@ export function FeatureShowcase() {
                     <div>
                       <div className="font-medium">Sarah rated Sushi Zen</div>
                       <div className="text-sm text-slate-500">5 hours ago</div>
+                      <div className="flex md:hidden mt-2">
+                    {[1, 2, 3, 4].map((star) => (
+                      <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                    <Star className="w-4 h-4 text-gray-300" />
+                  </div>
                     </div>
                   </div>
-                  <div className="flex">
+                  <div className="hidden md:flex">
                     {[1, 2, 3, 4].map((star) => (
                       <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     ))}

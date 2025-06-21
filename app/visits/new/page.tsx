@@ -283,7 +283,7 @@ export default function NewVisit() {
                           placeholder="Enter location"
                         />
                       </div>
-                      <Button type="button" onClick={createNewRestaurant} className="w-full">
+                      <Button type="button" onClick={createNewRestaurant} className="w-full bg-orange-500 text-white hover:bg-orange-500">
                         Add Restaurant
                       </Button>
                     </div>
@@ -404,7 +404,7 @@ export default function NewVisit() {
           </Card>
 
           <div className="flex gap-4">
-            <Button type="submit" disabled={loading} className="flex-1">
+            <Button type="submit" disabled={loading} className="flex-1 bg-orange-500 text-white hover:bg-orange-500">
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Record Visit
             </Button>

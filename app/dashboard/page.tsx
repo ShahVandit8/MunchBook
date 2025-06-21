@@ -113,7 +113,7 @@ export default function Dashboard() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card>
+          <Card className="bg-gradient-to-br from-orange-500/20 to-purple-500/20 border-0">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Total Visits
@@ -129,7 +129,7 @@ export default function Dashboard() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-gradient-to-br from-green-500/20 to-blue-500/20 border-0">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Restaurants</CardTitle>
               <MapPin className="h-4 w-4 text-muted-foreground" />
@@ -145,7 +145,7 @@ export default function Dashboard() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-0">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Average Rating
@@ -169,7 +169,8 @@ export default function Dashboard() {
               )}
             </CardContent>
           </Card>
-          <Card>
+
+          <Card className="bg-gradient-to-br from-yellow-500/20 to-rose-500/20 border-0">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
                 Favorite Spot
@@ -185,7 +186,7 @@ export default function Dashboard() {
                 </div>
               )}
               {stats.favoriteRestaurant && (
-                <Badge variant="secondary" className="text-xs mt-1">
+                <Badge variant="secondary" className="text-xs mt-2">
                   {stats.favoriteRestaurant.cuisineType}
                 </Badge>
               )}
@@ -227,7 +228,7 @@ export default function Dashboard() {
                     {recentVisits.map((visit) => (
                       <div
                         key={visit._id}
-                        className="flex items-center justify-between p-4 border rounded-lg"
+                        className="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl border border-green-200/50 dark:border-green-800/50"
                       >
                         <div className="flex-1">
                           <h4 className="font-medium">
@@ -294,9 +295,14 @@ export default function Dashboard() {
                 ) : (
                   <div className="space-y-3">
                     {suggestions.slice(0, 3).map((suggestion, index) => (
-                      <div key={index} className="p-3 bg-muted rounded-lg">
-                        <p className="text-sm">{suggestion.message}</p>
-                        <Badge variant="outline" className="mt-2 text-xs bg-orange-500">
+                      <div key={index} 
+                      className={suggestion.type=='cuisine'?'p-3 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl border border-purple-200/50 dark:border-purple-800/50'
+                        : suggestion.type=='restaurant'?'p-3 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-xl border border-orange-200/50 dark:border-orange-800/50'
+                        : suggestion.type=='dish' ? 'p-3 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-xl border border-green-200/50 dark:border-green-800/50' : ''
+                      }
+                      >
+                        <p className="text-sm font-thin">{suggestion.message}</p>
+                        <Badge variant="secondary" className="mt-2 text-xs font-thin">
                           {suggestion.type.toUpperCase()}
                         </Badge>
                       </div>

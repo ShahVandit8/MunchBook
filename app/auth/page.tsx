@@ -93,9 +93,7 @@ export default function AuthPage() {
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">
             <div className="flex items-center justify-center space-x-2 my-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">🧑‍🍳</span>
-              </div>
+               <img src='/MunchBook_Logo.png' alt="" className="h-8 w-8 rounded-lg" />
               <span className="text-xl font-bold bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
                 MunchBook
               </span>

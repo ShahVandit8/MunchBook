@@ -67,7 +67,7 @@ export async function GET() {
       const daysSinceLastVisit = getDaysSinceLastCuisine(visits, restaurants, leastTriedCuisine)
 
       if (daysSinceLastVisit > 14) {
-        const groupText = currentGroupId ? " your group hasn't had" : " you haven't had"
+        const groupText = currentGroupId ? " Your group hasn't had" : " You haven't had"
         suggestions.push({
           type: "cuisine",
           message: `${groupText} ${leastTriedCuisine} in ${daysSinceLastVisit} days. Time to try it again!`,
@@ -111,7 +111,7 @@ export async function GET() {
 
     if (topDishes.length > 0) {
       const favoriteDish = topDishes[0][0]
-      const groupText = currentGroupId ? "your group's" : "your"
+      const groupText = currentGroupId ? "Your group's" : "Your"
       suggestions.push({
         type: "dish",
         message: `${favoriteDish} is ${groupText} most ordered dish. Craving it again?`,
